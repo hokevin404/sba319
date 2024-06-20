@@ -44,6 +44,6 @@ router
             res.send(`User with id: ${req.params.id} was deleted`);
         else
             res.send(`Deletion failed`)
-    })
+    });
 
 export default router;
