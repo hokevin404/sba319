@@ -31,6 +31,12 @@ router
         // console.log(foundUser);
         res.send(foundUser).status(200);
     })
-    
+    .patch(async (req, res) => {
+        // console.log(req.params)
+        // console.log(req.body)
+        // Find user by ID, then apply updates from req.body, and then return with changes
+        let user = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
+        res.send(user);
+    })
 
 export default router;
