@@ -21,4 +21,16 @@ router
         }
     });
 
+router
+    .route('/:id')
+    .get(async (req, res) => {
+        // Search database for a user by given ID
+        const query = User.findById(req.params.id);
+        // Execute the query
+        let foundUser = await query.exec();
+        // console.log(foundUser);
+        res.send(foundUser).status(200);
+    })
+    
+
 export default router;
