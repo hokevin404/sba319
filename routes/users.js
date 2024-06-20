@@ -38,5 +38,12 @@ router
         let user = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
         res.send(user);
     })
+    .delete(async (req, res) => {
+        let user = await User.deleteOne({_id: req.params.id});
+        if(user.deletedCount)
+            res.send(`User with id: ${req.params.id} was deleted`);
+        else
+            res.send(`Deletion failed`)
+    })
 
 export default router;
