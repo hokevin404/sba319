@@ -1,14 +1,17 @@
 // Imports 
 import express from 'express';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import {connectDB} from './database/conn.js';
+import userRoute from './routes/users.js'
 
 // Initializations
-const app = express();
-const PORT = process.env.PORT || 3000;
 dotenv.config();
-mongoose.connect(process.env.ATLAS_URI);
+connectDB();
+const app = express();
+const PORT = process.env.PORT || 5001;
+
 app.use(express.json());
+app.use('/users', userRoute);
 
 app.get('/', (req, res) => {
     res.send(`Welcome to The World`);
