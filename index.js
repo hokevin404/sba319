@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import {connectDB} from './database/conn.js';
 import userRoute from './routes/users.js'
+import userLising from './routes/listing.js';
 
 // Initializations
 dotenv.config();
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
 app.use('/users', userRoute);
+app.use('/listings', userLising);
 
 app.get('/', (req, res) => {
     res.send(`Welcome to The World`);
