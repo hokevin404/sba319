@@ -8,9 +8,24 @@ router
     .get(async (req, res) => {
         const all = await Listing.find({});
         res.send(all);    
+    })
+    .post(async (req, res) => {
+        let newDocument = {};
+        if(req.body.userID && req.body.title && req.body.price && req.body.condition) {
+            newDocument = new Listing(req.body);
+
+        }
+
+        try {
+            await newDocument.save();
+            res.send(newDocument);
+        } catch (error) {
+            console.error(error);
+            res.end();
+        }
     });
 
-    router
+router
     .route('/:id')
     .get(async (req, res) => {
         // console.log(req.params.id);
