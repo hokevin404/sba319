@@ -1,8 +1,9 @@
+import { ObjectId } from "bson";
 import mongoose from "mongoose";
 
 const userListing = new mongoose.Schema({
     userID: {
-        type: String,
+        type: ObjectId,
         required: true,
         unique: true
     },

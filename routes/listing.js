@@ -5,8 +5,26 @@ const router = express.Router();
 
 router
     .route('/')
-    .get((req, res) => {
-        res.send(Listing)
-    })
+    .get(async (req, res) => {
+        const all = await Listing.find({});
+        res.send(all);    
+    });
+    // .post(async (req, res) => {
+    //     let newDocument = {};
+    //     if(req.body.userID && req.body.title && req.body.price && req.body.condition) {
+    //         newDocument = new Listing(req.body);
 
-export default router;    
+    //     }
+
+    //     try {
+    //         await newDocument.save();
+    //         res.send(newDocument);
+    //     } catch (error) {
+    //         console.error(error);
+    //         res.end();
+    //     }
+    // })
+
+
+
+export default router;

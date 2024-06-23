@@ -1,12 +1,13 @@
+import { ObjectId } from "bson";
 import mongoose from "mongoose";
 
-const userReview = new mongoose.Schema [{
+const reviewSchema = new mongoose.Schema({
     toUserID: {
-        type: Number,
+        type: ObjectId,
         required: true
     },
     fromUserID: {
-        type: Number,
+        type: ObjectId,
         required: true
     },
     rating: {
@@ -19,6 +20,8 @@ const userReview = new mongoose.Schema [{
         minLength: 5,
         maxLength: 250
     }
-}];
+});
 
-export default new mongoose.model("Reviews", userReview);
+// reviewSchema.index({review: 1});
+
+export default new mongoose.model("Review", reviewSchema);

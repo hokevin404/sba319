@@ -14,7 +14,7 @@ router
 
         try {
             await newDocument.save();
-            res.send(newDocument).status(204);
+            res.send(newDocument);
         } catch (error) {
             console.error(error);
             res.end();

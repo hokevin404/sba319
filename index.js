@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import {connectDB} from './database/conn.js';
 import userRoute from './routes/users.js'
 import userLising from './routes/listing.js';
-import userReview from './models/reviews.js'
+import userReview from './routes/reviews.js'
 
 // Initializations
 dotenv.config();
