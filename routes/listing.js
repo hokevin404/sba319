@@ -45,10 +45,13 @@ router
             console.error(`ERROR: Listings was not be found`);
             res.end();
         }
-
-        
-
     })
-
+    .delete(async (req, res) => {
+        let userListing = await Listing.deleteOne({_id: req.params.id});
+        if(userListing.deletedCount)
+            res.send(`Listing with id: ${req.params.id} was deleted`);
+        else
+            res.send(`Deletion failed`)
+    })
 
 export default router;
