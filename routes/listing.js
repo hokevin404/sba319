@@ -10,8 +10,18 @@ router
         res.send(all);    
     });
 
-
-
+    router
+    .route('/:id')
+    .get(async (req, res) => {
+        // console.log(req.params.id);
+        try {
+            const foundListing = await Listing.find({_id: req.params.id});
+            res.send(foundListing);
+        } catch (error) {
+            console.error(`ERROR: Listings was not be found`);
+            res.end();
+        }
+    })
 
 
 export default router;
