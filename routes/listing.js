@@ -37,6 +37,18 @@ router
             res.end();
         }
     })
+    .patch(async (req, res) => {
+        try {
+            const patchListing = await Listing.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
+            res.send(patchListing);
+        } catch (error) {
+            console.error(`ERROR: Listings was not be found`);
+            res.end();
+        }
+
+        
+
+    })
 
 
 export default router;
