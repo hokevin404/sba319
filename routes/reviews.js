@@ -29,30 +29,13 @@ router
     .route('/:userid')
     .get(async (req, res) => {
         // console.log(req.params.userid);
-        
-        // console.log(userWrittenReviews);
+
         try {
-            const userWrittenReviews = await Review.find({fromUserID: req.params.userid})
-            res.send(userWrittenReviews);
+            const userReviews = await Review.find({toUserID: req.params.userid});
+            res.json(userReviews);
         } catch (error) {
-            console.error(`ERROR: Listings was not be found`);
+            console.error(`ERROR: User reviews were not found`);
             res.end();
         }
     })
-    // .patch(async (req, res) => {
-    //     try {
-    //         const patchListing = await Listing.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
-    //         res.send(patchListing);
-    //     } catch (error) {
-    //         console.error(`ERROR: Listings was not be found`);
-    //         res.end();
-    //     }
-    // })
-    // .delete(async (req, res) => {
-    //     let userListing = await Listing.deleteOne({_id: req.params.id});
-    //     if(userListing.deletedCount)
-    //         res.send(`Listing with id: ${req.params.id} was deleted`);
-    //     else
-    //         res.send(`Deletion failed`)
-    // })
 export default router;
