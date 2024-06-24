@@ -5,13 +5,12 @@ const userListing = new mongoose.Schema({
     userID: {
         type: ObjectId,
         required: true,
-        unique: true
     },
     title: {
         type: String,
         required: true,
         minLength: 5,
-        maxLength: 30
+        maxLength: 150
     },
     price: {
         type: Number,
@@ -27,5 +26,7 @@ const userListing = new mongoose.Schema({
         required: false
     }
  });
+
+userListing.index({title: 1})
 
  export default new mongoose.model("Listing", userListing);

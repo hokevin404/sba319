@@ -22,6 +22,4 @@ const reviewSchema = new mongoose.Schema({
     }
 });
 
-// reviewSchema.index({review: 1});
-
 export default new mongoose.model("Review", reviewSchema);
