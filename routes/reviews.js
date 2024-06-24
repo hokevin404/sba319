@@ -28,14 +28,16 @@ router
 router
     .route('/:userid')
     .get(async (req, res) => {
-        console.log(req.params.userid);
-    //     try {
-    //         const foundListing = await Listing.find({_id: req.params.id});
-    //         res.send(foundListing);
-    //     } catch (error) {
-    //         console.error(`ERROR: Listings was not be found`);
-    //         res.end();
-    //     }
+        // console.log(req.params.userid);
+        
+        // console.log(userWrittenReviews);
+        try {
+            const userWrittenReviews = await Review.find({fromUserID: req.params.userid})
+            res.send(userWrittenReviews);
+        } catch (error) {
+            console.error(`ERROR: Listings was not be found`);
+            res.end();
+        }
     })
     // .patch(async (req, res) => {
     //     try {
